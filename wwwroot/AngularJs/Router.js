@@ -70,7 +70,7 @@ var employeeModule = angular
                 address: $scope.Address
             }; console.log(data.id);
             console.log(data)
-            $http.put('http://localhost:64535/api/Employee/'+data.id)
+            $http.put('http://localhost:64535/api/Employee/'+data.id,data )
                 .then(function (data) {
                     console.log(data.data);
                 });
