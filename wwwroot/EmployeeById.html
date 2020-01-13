@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html>
+<head ng-app="Employee">
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <div class="EMployeeByID" >
+        <h3 class="text-center text-primary" style="margin-top:30%;">Enter the Employee ID</h3>
+        <div class="form-row" style="margin-top:10%;">
+            <div class="col-md-8" style="padding-left:10px">
+                <input type="text" class="form-control" ng-model="EmployeeId">
+            </div>
+            <div class="col-md-4">
+                <input type="button" class="btn btn-primary " value="search" ng-click="getEmployeeID(EmployeeId)">
+            </div>
+
+        </div>
+    </div>
+    <div class="col-lg-12" style="margin:auto;float:left;" ng-controller="EmployeeByIdCtrl">
+        <table class="table table-cenered">
+            <tr>
+                <th>Id</th>
+                <th>Frist Name</th>
+                <th>Second Name</th>
+                <th>Gender Name</th>
+                <th>Address</th>
+                <th>Marital status</th>
+                <th>Date Of Birth</th>
+                <th>Salary</th>
+            </tr>
+            <tr>
+                <td>{{Data.id}}</td>
+                <td>{{Data.fristName}}</td>
+                <td>{{Data.secondName}}</td>
+                <td>{{Data.gender}}</td>
+                <td>{{Data.address}}</td>
+                <td>{{Data.matrial_staus}}</td>
+                <td>{{Data.dob}}</td>
+                <td>{{Data.salary}}</td>
+                </td>
+        </table>
+
+    </div>
+   
+
+</body>
+</html>

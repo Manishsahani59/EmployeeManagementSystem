@@ -1,0 +1,129 @@
+﻿<!DOCTYPE html>
+<html lang="en" ng-app="Employee">
+<head>
+    <title>Employee Management System</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link href="lib/css/Employee.css" rel="stylesheet" />
+    <script src="AngularJs/angular.js"></script>
+    <script src="AngularJs/angular-ui-router.js"></script>
+    <script src="AngularJs/Router.js"></script>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-md">
+        <h2 class="" style="padding:10px 0px;"><span class="custom-span">E</span>mployee <span class="custom-span">M</span>anagement <span class="custom-span">S</span>ystem</h2>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon">
+                <i class="fas fa-ellipsis-v"></i>
+            </span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-lg-end" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="modal" data-target="#AddEmployeeModel">Add Employee</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" ui-sref="Employees">List Of Employee</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" ui-sref="EmployeeById">Employee Id</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <br>
+
+    <div class="container" ui-view>
+
+    </div>
+
+
+    <!--  start Add Employee Model-->
+    <div class="modal fade" id="AddEmployeeModel" ng-controller="SaveEmployee">
+        <div class="modal-dialog modal-md">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color:maroon;color:#fff;">
+                    <h4 class="modal-title">Fill the Employee Details</h4>
+                    <button type="button" class="close" data-dismiss="modal" style="color:#fff">&times;</button>
+                </div>
+                <div class="modal-body" style="margin:auto">
+
+                    <div action="" method="">
+                        <div class="form-row">
+                            <div class="form-group col-md-6 ">
+                                <label for="userName" class="col-form-label">Frist Name</label>
+                                <input type="text" name="fristName" ng-model="fristName" class="form-control" id="userName">
+                             
+                            </div>
+                            <div class="form-group col-md-6 ">
+                                <label for="LastName" class="col-form-label">Last Name</label>
+                                <input type="text" name="secondName"  ng-model="secondName" class="form-control" id="LastName" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-6 ">
+                                <label for="Gender" class="col-form-label">Gender</label>
+                                <input type="text" name="gender" ng-model="gender" class="form-control" id="Gender" required>
+                            </div>
+                            <div class="form-group col-md-6 ">
+                                <label for="DOB" class="col-form-label">Date Of Birth</label>
+                                <input type="text" name="DateofBirth" ng-model="DateofBirth" class="form-control" id="DOB" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-6 ">
+                                <label for="materialStatus" class="col-form-label">Marital Status</label>
+                                <input type="text" name="Marital" ng-model="Marital" class="form-control" id="materialStatus" required>
+                            </div>
+                           
+                            <div class="form-group col-md-6 ">
+                                <label for="materialStatus" class="col-form-label">Salary</label>
+                                <input type="text" name="Salary" ng-model="Salary" class="form-control" id="materialStatus" required>
+                            </div>
+                            </div>
+                         <div class="form-row">
+                            <div class="form-group col-md-12 ">
+                                <label for="address" class="col-form-label">Address</label>
+                                <textarea name="address" ng-model="address" class="form-control" rows="4"></textarea>
+                            </div>
+                        </div>
+                     
+                    </div>
+
+
+                </div>
+                <div class="modal-footer">
+                    <input type="submit" value="Save Data" ng-click="postdata(fristName,secondName,gender,DateofBirth,Marital,Salary,address)" class="btn btn-danger btn-right text-right">
+                    <button type="button" class="btn btn-info" data-dismiss="modal">Cancle</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+</body>
+</html>
+
+

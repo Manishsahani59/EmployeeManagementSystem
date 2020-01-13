@@ -1,0 +1,74 @@
+﻿body {
+    background-color:lavenderblush;
+    margin:0;
+    padding:0;
+}
+.custom-div {
+   width:100%;
+   max-height:450px;
+   background-color:antiquewhite;
+   margin:5px; 0px;
+  
+}
+form-row {
+    margin: 0px;
+    padding:0px;
+}
+input[type="text"], input[type="password"] {
+    background-color: lavenderblush;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+label {
+    color:maroon;
+}
+.nav .nav-item .nav-link {
+    color:maroon;
+    font-weight:500;
+    opacity:1;
+   }
+    .nav .nav-item .nav-link:hover, .nav .nav-item .nav-link:focus {
+        color: #fff;
+        background-color: maroon;
+        transition-delay: .2s;
+    }
+.custom-span{
+    color:maroon;
+    font-weight:bold;
+    font-size:35px;
+
+}
+p {
+    margin:10px 0px;
+}
+.btn:focus, .btn:active {
+    outline: none !important;
+    box-shadow: none;
+}
+.navbar {
+    background-color:darkcyan;
+}
+ul.navbar-nav .nav-item .nav-link {
+    color: white;
+}
+ul.navbar-nav .nav-item .nav-link:focus {
+        color:dimgrey;
+        font-weight:bold;
+}
+ul.navbar-nav .nav-item .nav-link:hover {
+        color: black;
+        transition-delay:.2s ;
+  }
+span.navbar-toggler-icon {
+    color:#fff;
+}
+.EMployeeByID {
+    width: 300px;
+    height: 300px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+   
+}
+   
+

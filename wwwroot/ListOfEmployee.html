@@ -1,0 +1,149 @@
+﻿<!DOCTYPE html>
+<html ng-app="employeeModule">
+<head>
+    <meta charset="utf-8" />
+    <script src="AngularJs/angular.js"></script>
+    <script src="AngularJs/angular-ui-router.js"></script>
+    <script src="AngularJs/Router.js"></script>
+    <title></title>
+</head>
+<body ng-controller="getEmployee">
+
+    <h3 class="text-center">List Of Employee</h3>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10" style="max-height:500px;width:100%;margin:auto;">
+                <table class="table table-bordered table-striped table-hover table-responsive">
+                    <tr style="background-color:maroon;font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;color:#fff;">
+                        <th>Frist Name</th>
+                        <th>Second Name</th>
+                        <th>Gender Name</th>
+                        <th>Address</th>
+                        <th>Marital status</th>
+                        <th>Date Of Birth</th>
+                        <th>Salary</th>
+                        <th>Action</th>
+                    </tr>
+                    <tr ng-repeat="emp in employee">
+
+                        <td>{{emp.fristName}}  </td>
+                        <td> {{emp.secondName}} </td>
+                        <td>{{emp.gender}}</td>
+                        <td>{{emp.address}}</td>
+                        <td>{{emp.matrial_staus}}</td>
+                        <td>{{emp.dob}}</td>
+                        <td>{{emp.salary}}</td>
+                        <td><a ng-click="updateEmployee(emp.id,emp.fristName,emp.secondName,emp.gender,emp.address,emp.matrial_staus,emp.dob,emp.salary)" data-toggle="modal" data-target="#DeleteEmployeeModel" class="text-danger"><i class="fas fa-user-minus"></i></a> &nbsp;&nbsp; <a class="text-warning btn" ng-click="updateEmployee(emp.id,emp.fristName,emp.secondName,emp.gender,emp.address,emp.matrial_staus,emp.dob,emp.salary)" data-toggle="modal" data-target="#UpdateEmployeeModel"><i class="fas fa-user-edit"></i></a> </td>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+    </div>
+    <!-- start Delete Employee model-->
+    <div class="modal fade" id="DeleteEmployeeModel" ng-controller="DeleteEmployeeById">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header" style="background-color:maroon;color:whitesmoke;">
+                    <h4 class="modal-title">Delete Employee</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <h3 class="text-danger">Are You Sure Want to Delete The Id</h3>
+                    <p class="text-success">{{EmployeeID}} </p>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer" style="background-color:antiquewhite">
+                    <button type="button" class="btn btn-danger" ng-click="DeleteEmployee(EmployeeID)">Ok</button>
+                    <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- End Delete Employee model-->
+
+    <!--Start Update Employee Model-->
+
+    <div class="modal fade" id="UpdateEmployeeModel" ng-controller="updateEmployee">
+
+        <div class="modal-dialog modal-md">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color:maroon;color:#fff;">
+                    <h4 class="modal-title">Fill the Employee Details</h4>
+                    <button type="button" class="close" data-dismiss="modal" style="color:#fff">&times;</button>
+                </div>
+                <div class="modal-body" style="margin:auto">
+
+                    <div action="" method="">
+                        <div class="form-row">
+                            <div class="form-group col-md-12 ">
+                                <label for="userName" class="col-form-label">EmployeeId</label>
+                                <input type="text" name="fristName" ng-model="EmployeeID" class="form-control" id="userName" readonly>
+
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6 ">
+                                <label for="userName" class="col-form-label">Frist Name</label>
+                                <input type="text" name="fristName" ng-model="FristName" class="form-control" id="userName">
+
+                            </div>
+                            <div class="form-group col-md-6 ">
+                                <label for="LastName" class="col-form-label">Last Name</label>
+                                <input type="text" name="secondName" ng-model="SecondName" class="form-control" id="LastName" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-6 ">
+                                <label for="Gender" class="col-form-label">Gender</label>
+                                <input type="text" name="gender" ng-model="Gender" class="form-control" id="Gender" required>
+                            </div>
+                            <div class="form-group col-md-6 ">
+                                <label for="DOB" class="col-form-label">Date Of Birth</label>
+                                <input type="text" name="DateofBirth" ng-model="dob" class="form-control" id="DOB" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-6 ">
+                                <label for="materialStatus" class="col-form-label">Marital Status</label>
+                                <input type="text" name="Marital" ng-model="MaritalStaus" class="form-control" id="materialStatus" required>
+                            </div>
+                            <div class="form-group col-md-6 ">
+                                <label for="materialStatus" class="col-form-label">Salary</label>
+                                <input type="text" name="Salary" ng-model="salary" class="form-control" id="materialStatus" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-12 ">
+                                <label for="address" class="col-form-label">Address</label>
+                                <textarea name="address" ng-model="Address" class="form-control" rows="4"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                          
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="submit" value="update" ng-click="UpdateEmployee(EmployeeID,FristName,SecondName,Gender,dob,MaritalStaus,salary,Address)" class="btn btn-danger btn-right text-right">
+                        <button type="button" class="btn btn-info" data-dismiss="modal">Cancle</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+<!-- End update Employee Model--->
+
+
+
+
+        </body>
+</html>
