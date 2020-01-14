@@ -70,5 +70,8 @@ span.navbar-toggler-icon {
     transform: translate(-50%, -50%);
    
 }
+.modal.backdrop.show {
+    opacity:0.0;
+}
    
 

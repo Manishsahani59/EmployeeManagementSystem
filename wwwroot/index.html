@@ -13,6 +13,8 @@
     <script src="AngularJs/angular.js"></script>
     <script src="AngularJs/angular-ui-router.js"></script>
     <script src="AngularJs/Router.js"></script>
+ 
+  
 </head>
 
 <body>
@@ -63,17 +65,18 @@
                     <button type="button" class="close" data-dismiss="modal" style="color:#fff">&times;</button>
                 </div>
                 <div class="modal-body" style="margin:auto">
-
-                    <div action="" method="">
+                    <form action="" method="" name="addEmployeeForm">
                         <div class="form-row">
                             <div class="form-group col-md-6 ">
                                 <label for="userName" class="col-form-label">Frist Name</label>
-                                <input type="text" name="fristName" ng-model="fristName" class="form-control" id="userName">
-                             
+                                <input type="text" name="fristName" ng-model="fristName" class="form-control" id="userName" required>
+                                <span ng-show="addEmployeeForm.fristName.$touched && addEmployeeForm.fristName.$invalid">Enter the Frist Name</span>
+
                             </div>
                             <div class="form-group col-md-6 ">
                                 <label for="LastName" class="col-form-label">Last Name</label>
-                                <input type="text" name="secondName"  ng-model="secondName" class="form-control" id="LastName" required>
+                                <input type="text" name="secondName" ng-model="secondName" class="form-control" id="LastName" required>
+                                <span ng-show="addEmployeeForm.secondName.$touched && addEmployeeForm.secondName.$invalid">Enter the Second Name</span>
                             </div>
                         </div>
 
@@ -81,10 +84,12 @@
                             <div class="form-group col-md-6 ">
                                 <label for="Gender" class="col-form-label">Gender</label>
                                 <input type="text" name="gender" ng-model="gender" class="form-control" id="Gender" required>
+                                <span ng-show="addEmployeeForm.gender.$touched && addEmployeeForm.gender.$invalid">Enter the Gender </span>
                             </div>
                             <div class="form-group col-md-6 ">
                                 <label for="DOB" class="col-form-label">Date Of Birth</label>
                                 <input type="text" name="DateofBirth" ng-model="DateofBirth" class="form-control" id="DOB" required>
+                                <span ng-show="addEmployeeForm.DateofBirth.$touched && addEmployeeForm.DateofBirth.$invalid">Enter the date of Birth(dd-mm-yyyy)</span>
                             </div>
                         </div>
 
@@ -92,27 +97,35 @@
                             <div class="form-group col-md-6 ">
                                 <label for="materialStatus" class="col-form-label">Marital Status</label>
                                 <input type="text" name="Marital" ng-model="Marital" class="form-control" id="materialStatus" required>
+                                <span ng-show="addEmployeeForm.Marital.$touched && addEmployeeForm.Marital.$invalid">Enter the Marital Status</span>
                             </div>
-                           
+
                             <div class="form-group col-md-6 ">
                                 <label for="materialStatus" class="col-form-label">Salary</label>
-                                <input type="text" name="Salary" ng-model="Salary" class="form-control" id="materialStatus" required>
-                            </div>
-                            </div>
-                         <div class="form-row">
-                            <div class="form-group col-md-12 ">
-                                <label for="address" class="col-form-label">Address</label>
-                                <textarea name="address" ng-model="address" class="form-control" rows="4"></textarea>
+                                <input type="number" min="0" max="10000000" name="Salary" ng-model="Salary" class="form-control" id="materialStatus" required>
+                                <span ng-show="addEmployeeForm.Salary.$touched && addEmployeeForm.Salary.$invalid">Enter the Employee Salary</span>
                             </div>
                         </div>
-                     
-                    </div>
+
+                       
+                            <div class="form-row">
+                                <div class="form-group col-md-12 ">
+                                    <label for="address" class="col-form-label">Address</label>
+                                    <textarea name="address" ng-model="address" class="form-control" rows="4"></textarea>
+
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <span ng-show="addEmployeeForm.address.$touched && addEmployeeForm.address.$invalid">Enter the Address</span>
+                            </div>
+</form>
 
 
                 </div>
                 <div class="modal-footer">
-                    <input type="submit" value="Save Data" ng-click="postdata(fristName,secondName,gender,DateofBirth,Marital,Salary,address)" class="btn btn-danger btn-right text-right">
-                    <button type="button" class="btn btn-info" data-dismiss="modal">Cancle</button>
+                    <span ng-show="fristName.$touched && fristName.$invalid">The name is required.</span>
+                    <input type="submit" value="Save Data" ng-disabled="addEmployeeForm.$invalid"  ng-click="postdata(fristName,secondName,gender,DateofBirth,Marital,Salary,address)" class="btn btn-danger btn-right text-right" data-dismiss="modal">
+                    <button type="button" class="btn btn-info" data-dismiss="modal">cancel</button>
                 </div>
             </div>
         </div>

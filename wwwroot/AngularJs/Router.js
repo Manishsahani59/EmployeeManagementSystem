@@ -3,7 +3,8 @@
 
 var employeeModule = angular
     .module("Employee", ["ui.router"])
-    .config(function ($stateProvider) {
+    .config(function ($stateProvider, $urlRouterProvider) {
+     //   $urlRouterProvider.otherwise("/Employees");
         $stateProvider
             .state("Employees", {
                 url: "/Employees",
@@ -17,6 +18,7 @@ var employeeModule = angular
                 templateUrl: "EmployeeById.html",
                 controller:"EmployeeByIdCtrl"
             })
+       
     })
     .controller("getEmployee", function ($scope, $http) {
         $scope.updateEmployee = function (id, fristName, secondName, gender, address, matrial_staus, dob, salary) {
@@ -37,7 +39,6 @@ var employeeModule = angular
     .controller("SaveEmployee", function ($scope, $http) {
         $scope.postdata = function (fristName, secondName, gender, DateofBirth, Marital, Salary, address) {
             var data = {
-
                 fristName: $scope.fristName,
                 secondName: $scope.secondName,
                 gender: $scope.gender,
@@ -51,13 +52,14 @@ var employeeModule = angular
                 .then(function (data) {
                     $scope.PostDataResponse = data;
                     console.log(data.data);
+                 
                 })
                 .catch(function (err) {
                     console.log("err is ", err);
                 })
         }
     })
-    .controller("updateEmployee", function ($scope, $http) {
+    .controller("updateEmployee", function ($scope, $http, $state, $location) {
         $scope.UpdateEmployee = function (EmployeeID, FristName, SecondName, Gender, dob, MaritalStaus, salary, Address) {
             var data = {
                 id: $scope.EmployeeID,
@@ -70,21 +72,22 @@ var employeeModule = angular
                 address: $scope.Address
             }; console.log(data.id);
             console.log(data)
-            $http.put('http://localhost:64535/api/Employee/'+data.id,data )
+            $http.put('http://localhost:64535/api/Employee/'+data.id,data)
                 .then(function (data) {
                     console.log(data.data);
-                });
-
+                    $location.path("Employees");
+                    $state.reload();
+               });
         }
     })
 .controller("DeleteEmployeeById", function ($scope, $http) {
 
     $scope.DeleteEmployee = function (id) {
         $http.delete('http://localhost:64535/api/Employee/' + id).then((data) => {
-            console.log('data',data)
+            console.log('data', data)
         })
             .catch((err) => {
-                console.log('error')
+            console.log('error')
         })
     }
 })

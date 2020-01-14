@@ -6,6 +6,7 @@
     <script src="AngularJs/angular-ui-router.js"></script>
     <script src="AngularJs/Router.js"></script>
     <title></title>
+  
 </head>
 <body ng-controller="getEmployee">
 
@@ -26,13 +27,13 @@
                     </tr>
                     <tr ng-repeat="emp in employee">
 
-                        <td>{{emp.fristName}}  </td>
-                        <td> {{emp.secondName}} </td>
-                        <td>{{emp.gender}}</td>
+                        <td>{{emp.fristName | uppercase }}  </td>
+                        <td> {{emp.secondName | lowercase}} </td>
+                        <td>{{emp.gender | lowercase }}</td>
                         <td>{{emp.address}}</td>
                         <td>{{emp.matrial_staus}}</td>
-                        <td>{{emp.dob}}</td>
-                        <td>{{emp.salary}}</td>
+                        <td>{{emp.dob | date:"dd/MM/yyyy"}}</td>
+                        <td>{{emp.salary | number:2 }}</td>
                         <td><a ng-click="updateEmployee(emp.id,emp.fristName,emp.secondName,emp.gender,emp.address,emp.matrial_staus,emp.dob,emp.salary)" data-toggle="modal" data-target="#DeleteEmployeeModel" class="text-danger"><i class="fas fa-user-minus"></i></a> &nbsp;&nbsp; <a class="text-warning btn" ng-click="updateEmployee(emp.id,emp.fristName,emp.secondName,emp.gender,emp.address,emp.matrial_staus,emp.dob,emp.salary)" data-toggle="modal" data-target="#UpdateEmployeeModel"><i class="fas fa-user-edit"></i></a> </td>
                     </tr>
                 </table>
@@ -59,7 +60,7 @@
 
                 <!-- Modal footer -->
                 <div class="modal-footer" style="background-color:antiquewhite">
-                    <button type="button" class="btn btn-danger" ng-click="DeleteEmployee(EmployeeID)">Ok</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="DeleteEmployee(EmployeeID)">Ok</button>
                     <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
                 </div>
 
@@ -67,11 +68,10 @@
         </div>
     </div>
     <!-- End Delete Employee model-->
-
     <!--Start Update Employee Model-->
 
-    <div class="modal fade" id="UpdateEmployeeModel" ng-controller="updateEmployee">
 
+    <div class="modal fade" id="UpdateEmployeeModel" ng-controller="updateEmployee">
         <div class="modal-dialog modal-md">
             <div class="modal-content">
                 <div class="modal-header" style="background-color:maroon;color:#fff;">
@@ -129,21 +129,19 @@
                             </div>
                         </div>
 
-                        <div class="form-row">
-                          
-                        </div>
                     </div>
                     <div class="modal-footer">
-                        <input type="submit" value="update" ng-click="UpdateEmployee(EmployeeID,FristName,SecondName,Gender,dob,MaritalStaus,salary,Address)" class="btn btn-danger btn-right text-right">
-                        <button type="button" class="btn btn-info" data-dismiss="modal">Cancle</button>
+                        <input type="button" value="update" ng-click="UpdateEmployee(EmployeeID,FristName,SecondName,Gender,dob,MaritalStaus,salary,Address)" class="btn btn-danger btn-right text-right">
+                        <button type="button" class="btn btn-info" data-dismiss="modal">cancel</button>
                     </div>
                 </div>
             </div>
         </div>
-<!-- End update Employee Model--->
+     </div> 
+        <!-- End update Employee Model--->
 
 
 
 
-        </body>
+</body>
 </html>

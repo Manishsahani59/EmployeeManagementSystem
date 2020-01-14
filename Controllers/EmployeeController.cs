@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BusinessLayer.Interface;
 using BusinessLayer.Services;
 using CommonLayer.Model;
 using Microsoft.AspNetCore.Http;
@@ -13,7 +14,22 @@ namespace EmployeeManagementSystem.Controllers
     [ApiController]
     public class EmployeeController : ControllerBase
     {
-        EmployeeBL EmployeeBusinessLayer = new EmployeeBL();
+
+        IEmployeeBL EmployeeBusinessLayer;
+        public EmployeeController(IEmployeeBL EmployeeBusinessLayerInject)
+        {
+            try
+            {
+                EmployeeBusinessLayer = EmployeeBusinessLayerInject;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+           
+        }
+
+      //  EmployeeBL EmployeeBusinessLayer = new EmployeeBL();
        /// <summary>
        ///  Retrive the the Total Information of the User from the database
        /// </summary>
